@@ -1,0 +1,16 @@
+<p>Lista de cursos do portal {{ nomePortal }}</p>
+<app-curso-detalhe></app-curso-detalhe>
+
+<ul>
+    <!---
+    a diretiva ngFor a seguir equivale a
+
+    for(let i=0; i<this.cursos.length; i++){
+        let curso = this.cursos[i];
+    }
+    --->
+    
+    <li *ngFor="let curso of cursos">
+        {{curso}}
+    </li>
+</ul>
