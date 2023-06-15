@@ -1,0 +1,32 @@
+<h3>*ngIf</h3>
+
+<div *ngIf="cursos.length > 0">
+    Lista de cursos aqui.
+</div>
+
+<!--*ngIf é recomendado para árvores DOM grandes-->
+
+<div *ngIf="cursos.length == 0">
+    Não existem cursos para serem listados.
+</div>
+
+<div *ngIf="mostrarCursos">
+    Lista de cursos aqui.
+</div>
+
+<div *ngIf="!mostrarCursos">
+    Não existem cursos para serem listados.
+</div>
+
+<br>
+<button (click)="onMostrarCursos()">Mostrar ou esoconder cursos</button>
+
+<!--hidden é recomendado para árvores DOM pequenas-->
+<h5>Hidden como alternativa</h5>
+<div [hidden]="!mostrarCursos">
+    Lista de cursos aqui.
+</div>
+
+<div [hidden]="mostrarCursos">
+    Não existem cursos para serem listados.
+</div>

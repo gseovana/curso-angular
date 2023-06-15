@@ -50,7 +50,7 @@
     </article>
 </section>--->
 
-<section>
+<!--<section>
     <article>
         <h3>Event binding</h3>
         <div>
@@ -75,5 +75,18 @@
             Passe o mouse sobre mim</span>
 
         </div>
+    </article>
+</section>-->
+
+<!--<app-meu-form></app-meu-form>-->
+
+<section class="input-outout-properties">
+    <article>
+        <h3>Input/Output properties</h3>
+
+        <app-curso [nome]="nomeCurso"></app-curso>
+
+        <contador [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></contador>
+
     </article>
 </section>
