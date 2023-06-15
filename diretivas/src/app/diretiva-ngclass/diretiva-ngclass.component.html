@@ -1,0 +1,18 @@
+<h1>
+    <i class="bi"
+        [class.bi-bookmark]="!bookmarked"
+        [class.bi-bookmark-fill]="bookmarked"
+        (click)="onClick()">
+    </i>
+</h1>
+
+<h1>
+    <i class="glyphicon"
+    [ngClass]="{
+        'bi-bookmark': !bookmarked, 
+        'bi-bookmark-fill': bookmarked
+    }"
+        
+    (click)="onClick()">
+    </i>
+</h1>
