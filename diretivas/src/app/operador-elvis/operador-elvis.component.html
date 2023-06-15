@@ -1,0 +1,8 @@
+<h3>Tarefa</h3>
+<p>Descrição: {{ tarefa.desc }}</p>
+<!---<p>Responsável: {{ tarefa.responsavel.nome }}</p>-->
+
+<!--<p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : ''}}></p>-->
+
+<p>Responsável: {{ tarefa.responsavel?.usuario?.nome }}</p> 
+<!--Ao ser colocado após uma variável ou obj que pode ter valor nulo, o elvis faz uma lógica parecida com a do parágrafo anterior-->
