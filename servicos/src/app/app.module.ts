@@ -15,7 +15,7 @@ import { CursosModule } from './cursos/cursos.module';
     CursosModule,
     CriarCursoModule
   ],
-  providers: [CursosService],
+  //providers: [CursosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
