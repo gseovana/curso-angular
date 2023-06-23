@@ -2,5 +2,5 @@
 
 
 <div class="collection">
-    <a href="#!" class="collection-item" *ngFor="let curso of cursos">{{ curso.nome }}</a>
-  </div>
+  <a href="#!" class="collection-item" *ngFor="let curso of cursos" [routerLink]="['/curso', curso.id]">{{ curso.nome }}</a>
+</div>
