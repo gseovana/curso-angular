@@ -11,8 +11,8 @@ export class AlunosGuard{
         ): Observable <boolean> | boolean {
             
             if(state.url.includes('editar')){
-                alert('Usuário não autorizado para edição de alunos.')
-                return false;
+               // alert('Usuário não autorizado para edição de alunos.')
+                //return false;
             }
               return true;
         }
