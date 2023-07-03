@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class TemplateFormComponent {
 
+
+  onSubmit(form){
+    console.log(form);
+  }
+
 }
