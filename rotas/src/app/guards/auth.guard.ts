@@ -6,7 +6,7 @@ import { AuthService } from '../login/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AuthGuard {
 
   constructor(
     private authService: AuthService,
@@ -31,7 +31,7 @@ export class AuthGuard implements CanLoad {
       return false;
     }
 
-    canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
+    canMatchFn(route: Route): Observable<boolean> | Promise<boolean> | boolean {
       console.log('canLoad: verificando permissão de carregamento do módulo');
 
       return this.verificarAcesso();
