@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FormDebugComponent } from '../form-debug/form-debug.component';
 
 
 
@@ -8,7 +9,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FormDebugComponent
   ]
 })
 export class TemplateFormModule { }
