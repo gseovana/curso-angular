@@ -19,12 +19,12 @@
 
 <div ngModelGroup="endereco">
   <!--cep, numero, complemento-->
-  <div class="form-group row mb-3" [ngClass]="aplicaCssErro(cep)">
-    <div class="col-md-3">
+  <div class="form-group row mb-3">
+    <div class="col-md-3" [ngClass]="aplicaCssErro(cep)">
       <label for="cep" class="control-label">CEP</label>
-      <input type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel">
+      <input type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel" (blur)="consultaCEP($event, form)">
       <app-campo-control-error [mostrarErro]="verificaValidTouched(cep)" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>
-    </div>
+    </div>    
 
     <div class="col-md-3" [ngClass]="aplicaCssErro(numero)">
       <label for="numero" class="control-label">Número</label>
@@ -42,7 +42,7 @@
   <div class="mb-3 form-group" [ngClass]="aplicaCssErro(rua)">
     <div class="col-sm-12">
       <label for="rua" class="form-label">Rua</label>
-      <input type="text" class="form-control" id="rua" name="Rua" [(ngModel)]="usuario.nome" required #rua="ngModel">
+      <input type="text" class="form-control" id="rua" name="rua" ngModel required #rua="ngModel">
       <app-campo-control-error [mostrarErro]="verificaValidTouched(rua)" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>
     </div>  
   </div>

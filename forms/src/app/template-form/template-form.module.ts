@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FormDebugComponent } from '../form-debug/form-debug.component';
 import { CampoControlErrorComponent } from '../campo-control-error/campo-control-error.component';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -12,7 +12,9 @@ import { CampoControlErrorComponent } from '../campo-control-error/campo-control
     CommonModule,
     FormsModule,
     FormDebugComponent,
-    CampoControlErrorComponent
+    CampoControlErrorComponent,
+    HttpClientModule,
+    HttpClient
   ]
 })
 export class TemplateFormModule { }
