@@ -1,1 +1,22 @@
-<p>data-form works!</p>
+<form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+    <div class="mb-3 mt-4 form-group" [ngClass]="aplicaCssErro('nome')">
+        <div class="col-sm-12">
+          <label for="nome" class="form-label">Nome</label>        
+          <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
+          <app-campo-control-error [mostrarErro]="!form.controls['nome'].valid && form.controls['nome'].valid" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>        
+        </div>  
+    </div>
+  
+    <div class="mb-3 form-group" [ngClass]="aplicaCssErro('email')">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="exemplo@email.com" formControlName="email">
+      <app-campo-control-error [mostrarErro]="verificaValidTouched('email')" mensagemErro="Campo inválido." class="obrigatorio"></app-campo-control-error>  
+    </div>
+  
+  <!--botão-->
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="btn" (click)="cancelar()" class="btn">Cancelar</button>
+
+    <app-form-debug [form]="form"></app-form-debug>
+  </form>

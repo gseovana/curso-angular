@@ -4,25 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
-import { DataFormComponent } from './data-form/data-form.component';
-import { FormsModule } from '@angular/forms';
-import { FormDebugComponent } from './form-debug/form-debug.component';
-import { CampoControlErrorComponent } from './campo-control-error/campo-control-error.component';
+import { } from './data-form/data-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DataFormModule } from './data-form/data-form.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateFormComponent,
-    DataFormComponent,
-    FormDebugComponent,
-    CampoControlErrorComponent
+    TemplateFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    DataFormModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
