@@ -23,12 +23,28 @@ export class DataFormComponent {
     /* this.form = new FormGroup({
         nome: new FormControl(null),
         email: new FormControl(null)
+
+        endereco: new FormGroup({
+          cep: new FormControl(null)
+        })
       });
     */
+   
       this.form = this.formBuilder.group({
         nome: [null, [Validators.required, Validators.minLength(3)]],
-        email: [null, [Validators.required, Validators.email]]
-    });
+        email: [null, [Validators.required, Validators.email]],
+          endereco: this.formBuilder.group({
+          cep: [null, Validators.required],
+          numero: [null, Validators.required],
+          complemento: [null],
+          rua: [null, Validators.required],
+          bairro: [null, Validators.required],
+          cidade: [null, Validators.required],
+          estado: [null, Validators.required]
+        })
+
+      });
+      
   }
 
   onSubmit() {
