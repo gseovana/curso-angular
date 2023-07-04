@@ -18,6 +18,11 @@ export class TemplateFormComponent {
 
   onSubmit(form) {
     console.log(form);
+
+    this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
+    .pipe(
+      map(response => response)
+    ).subscribe(dados => console.log(dados));
   }
 
   verificaValidTouched(campo) {
