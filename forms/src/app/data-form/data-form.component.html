@@ -67,10 +67,20 @@
         </div>
       </div>
     </div>
+
+    <div class="form-group mb-3">
+      <div class="col-md-3" [ngClass]="aplicaCssErro('cargo')">
+        <label for="cargo" class="control-label">Cargo</label>
+        <select class="form-control" id="cargo" formControlName="cargo" [compareWith]="compararCargos">
+          <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{ cargo.desc }}</option>
+        </select>
+      </div>
+    </div>
   
   <!--botão-->
       <button type="submit" class="btn btn-primary">Enviar</button>
       <button type="btn" (click)="cancelar()" class="btn">Cancelar</button>
+      <button type="btn" (click)="setarCargo()" class="btn">Cargo</button>
 
     <app-form-debug [form]="form"></app-form-debug>
   </form>
