@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { } from './data-form/data-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DataFormModule } from './data-form/data-form.module';
 import { SharedModule } from './shared/shared.module';
 

@@ -2,6 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strictFunctionTypes": false, 
     "strictNullChecks": false,
     "useUnknownInCatchVariables": false,
     "baseUrl": "./",
