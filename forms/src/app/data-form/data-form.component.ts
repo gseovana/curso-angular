@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 
@@ -8,61 +8,44 @@ import { map } from 'rxjs/operators';
   templateUrl: './data-form.component.html',
   styleUrls: ['./data-form.component.css']
 })
-export class DataFormComponent {
-
+export class DataFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient
-  )
-    {}
+  ) {}
 
-  ngOnInit(){
-
-    /* this.form = new FormGroup({
-        nome: new FormControl(null),
-        email: new FormControl(null)
-
-        endereco: new FormGroup({
-          cep: new FormControl(null)
-        })
-      });
-    */
-   
-      this.form = this.formBuilder.group({
-        nome: [null, [Validators.required, Validators.minLength(3)]],
-        email: [null, [Validators.required, Validators.email]],
-          endereco: this.formBuilder.group({
-          cep: [null, Validators.required],
-          numero: [null, Validators.required],
-          complemento: [null],
-          rua: [null, Validators.required],
-          bairro: [null, Validators.required],
-          cidade: [null, Validators.required],
-          estado: [null, Validators.required]
-        })
-
-      });
-      
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      nome: [null, [Validators.required, Validators.minLength(3)]],
+      email: [null, [Validators.required, Validators.email]],
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento: [null],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required]
+      })
+    });
   }
 
   onSubmit() {
     console.log(this.form);
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value))
+    this.http
+      .post('https://httpbin.org/post', JSON.stringify(this.form.value))
       .pipe(
         map(response => response)
       )
-      .subscribe(
-        dados => {
-          console.log(dados);
-          //rese
-          //this.form.reset();
-          this.cancelar();
-        });
+      .subscribe(dados => {
+        console.log(dados);
+        this.cancelar();
+      });
   }
 
-  cancelar(){
+  cancelar() {
     this.form.reset();
   }
 
@@ -77,4 +60,51 @@ export class DataFormComponent {
     };
   }
 
+  consultaCEP() {
+    let cep = this.form.get('endereco.cep').value;
+
+    cep = cep.replace(/\D/g, '');
+
+    if (cep !== '') {
+      const validacep = /^[0-9]{8}$/;
+
+      if (validacep.test(cep)) {
+        this.resetaDadosForm();
+
+        this.http
+          .get(`https://viacep.com.br/ws/${cep}/json`)
+          .pipe(
+            map((dados: any) => dados)
+          )
+          .subscribe(dados => this.popularDadosForm(dados));
+      }
+    }
+  }
+
+  resetaDadosForm() {
+    this.form.patchValue({
+      endereco: {
+        rua: null,
+        complemento: null,
+        bairro: null,
+        cidade: null,
+        estado: null
+      }
+    });
+  }
+
+  popularDadosForm(dados) {
+    this.form.patchValue({
+      endereco: {
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    });
+
+    //this.form.get('nome').setValue('Geovana');
+    //this.form.get('endereco.numero').setValue(14);
+  }
 }
