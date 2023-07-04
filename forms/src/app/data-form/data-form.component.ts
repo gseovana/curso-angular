@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-data-form',
@@ -23,6 +24,7 @@ export class DataFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
 
     this.dropdownService.getEstadosBr()
     .subscribe((dados: any) => {this.estados = dados; console.log(dados)});
