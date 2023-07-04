@@ -4,7 +4,7 @@
         <div class="col-sm-12">
           <label for="nome" class="form-label">Nome</label>        
           <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
-          <app-campo-control-error [mostrarErro]="!form.controls['nome'].valid && form.controls['nome'].valid" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>        
+          <app-campo-control-error [mostrarErro]="verificaValidTouched('nome')" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>        
         </div>  
     </div>
   

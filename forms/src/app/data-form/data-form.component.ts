@@ -34,7 +34,9 @@ export class DataFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form);
-    this.http
+
+    if(this.form.valid){
+      this.http
       .post('https://httpbin.org/post', JSON.stringify(this.form.value))
       .pipe(
         map(response => response)
@@ -43,6 +45,20 @@ export class DataFormComponent implements OnInit {
         console.log(dados);
         this.cancelar();
       });
+    } else {
+      this.verificaValidacoesForm(this.form);
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup){
+    Object.keys(formGroup.controls).forEach(campo => {
+      const controle = formGroup.get(campo);
+      controle.markAsTouched();
+
+      if(controle instanceof FormGroup){
+        this.verificaValidacoesForm(controle);
+      }
+    })
   }
 
   cancelar() {
@@ -50,7 +66,7 @@ export class DataFormComponent implements OnInit {
   }
 
   verificaValidTouched(campo) {
-    return !this.form.get(campo).valid && this.form.get(campo).touched;
+    return !this.form.get(campo).valid && (this.form.get(campo).touched || this.form.get(campo).dirty);
   }
 
   aplicaCssErro(campo) {
