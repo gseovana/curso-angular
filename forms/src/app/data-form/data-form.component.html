@@ -36,8 +36,8 @@
       </div>
     
       <!--rua-->
-      <div class="mb-3 form-group" [ngClass]="aplicaCssErro('endereco.rua')">
-        <div class="col-sm-12">
+      <div class="mb-3 form-group">
+        <div class="col-sm-12" [ngClass]="aplicaCssErro('endereco.rua')">
           <label for="rua" class="form-label">Rua</label>
           <input type="text" class="form-control" id="rua" formControlName="rua">
           <app-campo-control-error [mostrarErro]="verificaValidTouched('endereco.rua')" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>
@@ -45,8 +45,8 @@
       </div>
     
       <!--bairro, cidade, estado-->
-      <div class="form-group row mb-3" [ngClass]="aplicaCssErro('endereco.bairro')">
-        <div class="col-md-5">
+      <div class="form-group row mb-3">
+        <div class="col-md-5" [ngClass]="aplicaCssErro('endereco.bairro')">
           <label for="bairro" class="control-label">Bairro</label>
           <input type="text" class="form-control" id="bairro" formControlName="bairro">
           <app-campo-control-error [mostrarErro]="verificaValidTouched('endereco.bairro')" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>
@@ -95,7 +95,20 @@
           </div>
         </div>
     </div>
-    <!--botão-->
+
+    <!--termos-->
+    <div class="form-group">
+      <div class="col-md-3" [ngClass]="aplicaCssErro('termos')">
+        <div class="checkbox mb-4">
+          <label class="checkbox-inline">
+            <input type="checkbox" formControlName="termos"> Aceito os termos de serviço.
+          </label>
+          <app-campo-control-error [mostrarErro]="form.get('termos').invalid" mensagemErro="Por favor, aceite os termos." class="obrigatorio"></app-campo-control-error>
+        </div>
+      </div>
+    </div>
+
+    <!--botões-->
         <button type="submit" class="btn btn-primary mr-3">Enviar</button>
         <button (click)="cancelar()" class="btn btn-default">Cancelar</button>
         <button (click)="setarCargo()" class="btn btn-info ">Cargo</button>

@@ -52,7 +52,8 @@ export class DataFormComponent implements OnInit {
 
       cargo: [null],
       tecnologias: [null],
-      newsletter: ['s']
+      newsletter: ['s'],
+      termos: [null, Validators.pattern('true')]
 
     });
   }
@@ -94,10 +95,9 @@ export class DataFormComponent implements OnInit {
     return !this.form.get(campo).valid && (this.form.get(campo).touched || this.form.get(campo).dirty);
   }
 
-  aplicaCssErro(campo) {
+  aplicaCssErro(campo: string) {
     return {
-      'has-error': this.verificaValidTouched(campo),
-      'has-feedback': !campo.valid && campo.touched
+      'has-error': this.verificaValidTouched(campo)
     };
   }
 
