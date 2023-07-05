@@ -34,14 +34,13 @@
       <div class="form-group row mb-3">
         <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.cep')">
           <label for="cep" class="control-label">CEP</label>
-          <input type="text" class="form-control" id="cep" formControlName="cep" (blur)="consultaCEP()">
-          <app-error-msg [control]="$any(form.get('cep'))" label="CEP" class="obrigatorio"></app-error-msg>        
+          <input type="text" class="form-control" id="cep" formControlName="cep">
         </div>    
     
         <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.numero')">
           <label for="numero" class="control-label">Número</label>
           <input type="text" class="form-control" id="numero" formControlName="numero">
-          <app-error-msg [control]="$any(form.get('nome'))" label="Nome" class="obrigatorio"></app-error-msg>        
+          <app-error-msg [control]="$any(form.get('numero'))" label="Número" class="obrigatorio"></app-error-msg>        
         </div>
     
         <div class="col-md-6">
