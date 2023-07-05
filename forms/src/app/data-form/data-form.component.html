@@ -97,8 +97,8 @@
     </div>
 
     <!--termos-->
-    <div class="form-group">
-      <div class="col-md-3" [ngClass]="aplicaCssErro('termos')">
+    <div class="form-group row mb-3">
+      <div class="col-md-4" [ngClass]="aplicaCssErro('termos')">
         <div class="checkbox mb-4">
           <label class="checkbox-inline">
             <input type="checkbox" formControlName="termos"> Aceito os termos de serviço.
@@ -106,13 +106,24 @@
           <app-campo-control-error [mostrarErro]="form.get('termos').invalid" mensagemErro="Por favor, aceite os termos." class="obrigatorio"></app-campo-control-error>
         </div>
       </div>
+
+      <div class="col-md-4" [ngClass]="aplicaCssErro('frameworks')">
+        <label for="frameworks">Frameworks</label>
+        <div id="frameworks" class="row">
+          <div class="checkbox" class="col-sm-4" formArrayName="frameworks" *ngFor="let item of form.get('frameworks')['controls']; let i = index">
+            <label class="checkbox-inline">
+              <input type="checkbox" [formControlName]="i"> {{ frameworks[i] }}
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--botões-->
-        <button type="submit" class="btn btn-primary mr-3">Enviar</button>
-        <button (click)="cancelar()" class="btn btn-default">Cancelar</button>
-        <button (click)="setarCargo()" class="btn btn-info ">Cargo</button>
-        <button (click)="setarTecnologias()" class="btn btn-default">Tecnologia</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button (click)="cancelar()" class="btn btn-danger m-2">Cancelar</button>
+        <button (click)="setarCargo()" class="btn btn-info">Cargo</button>
+        <button (click)="setarTecnologias()" class="btn btn-warning m-2">Tecnologia</button>
 
       <app-form-debug [form]="form"></app-form-debug>
   </form>
