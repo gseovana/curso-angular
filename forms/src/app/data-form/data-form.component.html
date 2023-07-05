@@ -15,6 +15,9 @@
       <label for="email" class="form-label">Email</label>
       <input type="email" class="form-control" id="email" placeholder="exemplo@email.com" formControlName="email">
       <app-campo-control-error [mostrarErro]="verificaValidTouched('email')" mensagemErro="Campo inválido." class="obrigatorio"></app-campo-control-error>  
+      <!--<app-campo-control-error [mostrarErro]="form.get('email').status === 'PENDING'" mensagemErro="Validando email..." class="obrigatorio"></app-campo-control-error>-->  
+      <!--<app-campo-control-error [mostrarErro]="form.get('email').status === 'VALID'" mensagemErro="Email válido" class="obrigatorio"></app-campo-control-error>-->  
+      <!--<app-campo-control-error [mostrarErro]="form.get('email').hasError('emailInvalido')" mensagemErro="Email já cadastrado!" class="obrigatorio"></app-campo-control-error>-->  
     </div>
     <!--
       <div class="col-md-6" [ngClass]="aplicaCssErro('confirmarEmail')">

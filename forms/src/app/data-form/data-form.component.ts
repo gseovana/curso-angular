@@ -7,6 +7,7 @@ import { EstadoBr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { Observable } from 'rxjs';
 import { FormValidations } from '../shared/form-validations';
+import { VerificaEmailService } from './services/verifica-email.service';
 
 @Component({
   selector: 'app-data-form',
@@ -26,10 +27,13 @@ export class DataFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropdownService: DropdownService,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private verificaEmailService: VerificaEmailService 
   ) {}
 
   ngOnInit() {
+
+    //this.verificaEmailService.verificarEmail('email@email.com').subscribe();
 
     this.dropdownService.getEstadosBr()
     .subscribe((dados: any) => {this.estados = dados; console.log(dados)});
@@ -41,7 +45,7 @@ export class DataFormComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email]/*, [this.validarEmail.bind(this)]*/],
       /*confirmarEmail: [null, FormValidations.equalsTo('email')],*/
       
       endereco: this.formBuilder.group({
@@ -194,6 +198,13 @@ export class DataFormComponent implements OnInit {
 
   setarTecnologias(){
     this.form.get('tecnologias').setValue(['java', 'javascript', 'php']);
+  }
+
+  validarEmail(formControl: FormControl) {
+    return this.verificaEmailService.verificarEmail(formControl.value)
+      .pipe(
+        map(emailExiste => emailExiste ? { emailInvalido : true} : null)
+      );
   }
 
  
