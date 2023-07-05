@@ -1,5 +1,6 @@
 <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
     
+  <!--nome -->
     <div class="mb-3 mt-4 form-group" [ngClass]="aplicaCssErro('nome')">
         <div class="col-sm-12">
           <label for="nome" class="form-label">Nome</label>        
@@ -7,15 +8,26 @@
           <app-campo-control-error [mostrarErro]="verificaValidTouched('nome')" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>        
         </div>  
     </div>
-  
-    <div class="mb-5 form-group" [ngClass]="aplicaCssErro('email')">
+
+  <!--email e confirmacao de email-->
+  <div class="form-group row mb-3">
+    <div class="col-md-12" [ngClass]="aplicaCssErro('email')">
       <label for="email" class="form-label">Email</label>
       <input type="email" class="form-control" id="email" placeholder="exemplo@email.com" formControlName="email">
       <app-campo-control-error [mostrarErro]="verificaValidTouched('email')" mensagemErro="Campo inválido." class="obrigatorio"></app-campo-control-error>  
     </div>
-
+    <!--
+      <div class="col-md-6" [ngClass]="aplicaCssErro('confirmarEmail')">
+        <label for="confirmarEmail" class="form-label">Confirmar email</label>
+        <input type="confirmarEmail" class="form-control" id="confirmarEmail" placeholder="exemplo@email.com" formControlName="confirmarEmail">
+        <app-campo-control-error [mostrarErro]="form.get('confirmarEmail').hasError('equalsTo')" mensagemErro="Campo inválido." class="obrigatorio"></app-campo-control-error>  
+      </div>
+    -->
+  </div>
+    
+    
+    <!--cep, numero, complemento-->
     <div formGroupName="endereco">
-      <!--cep, numero, complemento-->
       <div class="form-group row mb-3">
         <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.cep')">
           <label for="cep" class="control-label">CEP</label>
