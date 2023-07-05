@@ -1,6 +1,7 @@
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
 
 export class FormValidations {
+
     static requiredMinCheckbox(min = 1){
         const validator = (formArray: FormArray) => {
             /*const values = formArray.controls;
@@ -57,4 +58,15 @@ export class FormValidations {
         };
         return validator;
     }*/
+
+    static getErrorMsg(fieldName: string, validatorName: string, validatorValue?: any){
+        const config = {
+            'required': `${fieldName} é obrigatório.`,
+            'minlength': `${fieldName} precisa ter no mínimo ${validatorValue.requiredLength} caracteres`,
+            'maxlength': `${fieldName} pode ter no máximo ${validatorValue.requiredLength} caracteres`,
+            'cepInvalido': 'CEP inválido.'
+        };
+
+        return config[validatorName];
+    }
 }
