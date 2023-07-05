@@ -1,4 +1,4 @@
-import { FormArray } from "@angular/forms";
+import { FormArray, FormControl } from "@angular/forms";
 
 export class FormValidations {
     static requiredMinCheckbox(min = 1){
@@ -19,5 +19,17 @@ export class FormValidations {
     
         };
         return validator;
+    }
+
+    static cepValidator(control: FormControl){
+
+        const cep = control.value;
+        if(cep && cep !== '') {
+            const validacep = /^[0-9]{8}$/;
+            return validacep.test(cep) ? null : { cepInvalido : true };
+
+        }
+
+        return null;
     }
 }

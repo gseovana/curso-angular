@@ -20,7 +20,7 @@
         <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.cep')">
           <label for="cep" class="control-label">CEP</label>
           <input type="text" class="form-control" id="cep" formControlName="cep" (blur)="consultaCEP()">
-          <app-campo-control-error [mostrarErro]="verificaValidTouched('endereco.cep')" mensagemErro="Campo obrigatório." class="obrigatorio"></app-campo-control-error>
+          <app-campo-control-error [mostrarErro]="form.get('endereco.cep').hasError('cepInvalido') || verificaValidTouched('endereco.cep')" mensagemErro="CEP inválido." class="obrigatorio"></app-campo-control-error>
         </div>    
     
         <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.numero')">

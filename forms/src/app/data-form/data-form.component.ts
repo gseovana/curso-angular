@@ -49,7 +49,7 @@ export class DataFormComponent implements OnInit {
         complemento: [null],
         rua: [null, Validators.required],
         bairro: [null, Validators.required],
-        cidade: [null, Validators.required],
+        cidade: [null, [Validators.required, FormValidations.cepValidator]],
         estado: [null, Validators.required]
       }),
 
