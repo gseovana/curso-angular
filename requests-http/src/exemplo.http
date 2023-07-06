@@ -2,7 +2,7 @@ http://localhost:3000/cursos
 
 ###
 
-GET http://localhost:3000/cursos/1
+GET http://localhost: 3000/cursos/1
 
 ###
 
