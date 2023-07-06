@@ -41,7 +41,7 @@ export class CursosListaComponent {
       })
     );
 
-    //DEPRECATED 
+    // -------------------- DEPRECATED --------------------------
     /* this.service.list().pipe(
       catchError(error => EMPTY)
     )
@@ -53,7 +53,7 @@ export class CursosListaComponent {
       () => console.log('Observable completo!')
     );*/ 
 
-    this.service.list().pipe(
+    /*this.service.list().pipe(
       catchError(error => EMPTY)
     )
     .subscribe({
@@ -66,7 +66,7 @@ export class CursosListaComponent {
       complete: () => {
         console.log('Observable completo!');
       }
-    });
+    });*/
   }
 
   handleError(){
