@@ -38,4 +38,8 @@ export class CursosService {
     }
     return this.create(curso);
   }
+
+  remove(id: number){
+    return this.http.delete(`http://localhost:3000/cursos/${id}`).pipe(take(1));
+  }
 }
