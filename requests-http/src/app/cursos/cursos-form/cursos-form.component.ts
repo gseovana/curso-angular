@@ -63,27 +63,38 @@ export class CursosFormComponent {
   onSubmit() {
     this.submitted = true;
     console.log(this.form.value);
+
     if (this.form.valid) {
-      console.log('submit');
-      this.service.create(this.form.value).subscribe({
-        next: dados => {
-          console.log(dados);
-        },
-        error: error => {
-          this.modal.showAlertDanger('Erro ao criar curso. Tente novamente.')
-        },
-        complete: () => {
-          this.modal.showAlertSuccess('Curso criado com sucesso!');
-          this.router.navigateByUrl('/cursos');
-        }
-      });
+      let msgSuccess = 'Curso criado com sucesso!';
+      let msgError = 'Erro ao criar curso. Tente novamente!';
+
+      if (this.form.value.id) {
+        msgSuccess = 'Curso atualizado com sucesso!';
+        msgError = 'Erro ao atualizar curso. Tente novamente!';
+      }
+
+      this.service.save(this.form.value)
+        .subscribe({
+          next: dados => {
+            console.log(dados);
+          },
+          error: error => {
+            this.modal.showAlertDanger(msgError)
+          },
+          complete: () => {
+            this.modal.showAlertSuccess(msgSuccess);
+            this.router.navigateByUrl('/cursos');
+          }
+        });
+
     }
   }
 
-  onCancel() {
-    this.submitted = false;
-    this.form.reset();
-    //console.log('cancel');
+    onCancel() {
+      this.submitted = false;
+      this.form.reset();
+      //console.log('cancel');
+    }
+
   }
 
-}

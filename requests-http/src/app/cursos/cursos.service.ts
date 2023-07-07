@@ -24,7 +24,18 @@ export class CursosService {
     return this.http.get<Curso>(`http://localhost:3000/cursos/${id}`).pipe(take(1));
   }
 
-  create(curso: Curso){
+  private create(curso: Curso){
     return this.http.post('http://localhost:3000/cursos', curso).pipe(take(1));
+  }
+
+  private update(curso: Curso) {
+    return this.http.put(`http://localhost:3000/cursos/${curso.id}`, curso).pipe(take(1));
+  }
+
+  save(curso: Curso) {
+    if(curso.id) {
+      return this.update(curso);
+    }
+    return this.create(curso);
   }
 }
