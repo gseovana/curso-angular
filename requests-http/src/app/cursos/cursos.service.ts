@@ -21,7 +21,7 @@ export class CursosService {
   }
 
   loadById(id: number) {
-    return this.http.get(`http://localhost:3000/cursos/${id}`).pipe(take(1));
+    return this.http.get<Curso>(`http://localhost:3000/cursos/${id}`).pipe(take(1));
   }
 
   create(curso: Curso){
