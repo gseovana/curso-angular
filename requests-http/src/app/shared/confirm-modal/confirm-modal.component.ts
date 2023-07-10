@@ -28,9 +28,11 @@ export class ConfirmModalComponent {
   }
 
   onClose(){
-    this.confirmAndClose(false);
-  }
+    this.bsModalRef.hide();
 
+    //this.confirmAndClose(false);
+  }
+  
   private confirmAndClose(value: boolean){
     this.confirmResult.next(value);
     this.bsModalRef.hide();

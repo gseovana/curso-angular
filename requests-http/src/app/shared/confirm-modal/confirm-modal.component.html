@@ -7,8 +7,8 @@
         <p>{{ msg }}</p>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onClose()">{{ cancelText
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onClose()" aria-label="Close">{{ cancelText
             }}</button>
-        <button type="button" class="btn btn-primary" (Click)="onConfirm()">{{ confirmText }}</button>
+        <button type="button" class="btn btn-primary" (click)="onConfirm()">{{ confirmText }}</button>
     </div>
 </div>

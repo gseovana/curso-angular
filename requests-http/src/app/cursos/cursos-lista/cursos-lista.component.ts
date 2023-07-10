@@ -87,6 +87,7 @@ export class CursosListaComponent {
   onDelete(curso: Curso){
     this.cursoSelecionado = curso;
     //this.deleteModalRef = this.modalService.show(this.deleteModal, {class: 'modal-sm'});
+    
     const result$ = this.alertService.showConfirm('Confirmação', 'Tem certeza que deseja remover esse curso?');
     result$.asObservable()
     .pipe(
@@ -96,9 +97,11 @@ export class CursosListaComponent {
       .subscribe({
         complete: () => {
           this.onRefresh();
+          //this.deleteModalRef.hide();
         },
         error: ()  => {
           this.alertService.showAlertDanger('Erro ao remover curso. Tente novamente.');
+          //this.deleteModalRef.hide();
         }
       });
   }
