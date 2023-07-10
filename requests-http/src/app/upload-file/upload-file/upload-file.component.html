@@ -3,7 +3,7 @@
         <label for="formFile" class="form-label" id="customFileLabel">Selecionar arquivo</label>
         <input class="form-control" type="file" id="customFile" (change)="onChange($event)" multiple>
     </div>
-    <div class="progress" role="progressbar" aria-label="Example with label">
+    <div class="progress m-3" role="progressbar" aria-label="Example with label">
         <div class="progress-bar" [style.width]="progress + '%'">{{ progress }}%</div>
     </div>
 </div>
