@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UploadFileService {
+export class FileService {
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +19,13 @@ export class UploadFileService {
     return this.http.post(url, formData, {
       observe: 'events',
       reportProgress: true
+    });
+  }
+
+  download(url: string){
+    return this.http.get(url, {
+      responseType: 'blob' as 'json',
+      
     });
   }
 }

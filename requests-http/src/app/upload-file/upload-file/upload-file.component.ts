@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UploadFileService } from '../upload-file.service';
+import { FileService } from '../file.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
 
@@ -14,7 +14,7 @@ export class UploadFileComponent {
   files: Set<File>;
   progress = 0;
 
-  constructor(private service: UploadFileService){}
+  constructor(private service: FileService){}
 
   onChange(event: Event){
     console.log(event);
@@ -44,7 +44,7 @@ export class UploadFileComponent {
           filterResponse()
         )
         .subscribe(response => console.log('Upload concluído!'));
-        
+
         // .subscribe((event: HttpEvent<Object>) => {
         //   //console.log(event)
         //   if(event.type === HttpEventType.Response){
@@ -56,5 +56,29 @@ export class UploadFileComponent {
         //   }*/
         // });
     }
+  }
+
+  onDownloadExcel(){
+    this.service.download('/api'+'/downloadExcel')
+      .subscribe((res: any) => {
+        const file = new Blob([res], {
+          type: res.type
+        });
+
+        const blob = window.URL.createObjectURL(file);
+
+        const link = document.createElement('a');
+        link.href = blob;
+        link.download = 'report.xlsx';
+
+        link.click();
+
+        window.URL.revokeObjectURL(blob);
+        link.remove();
+      });
+  }
+
+  onDownloadPDF(){
+
   }
 }
